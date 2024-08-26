@@ -136,7 +136,7 @@ export default function Log() {
   return (
     <Box sx={{ maxWidth: 1200, margin: 'auto', padding: 3 }}>
       <Alert severity="info">
-        按次计费与按token计费同时存在 按次计费优先。
+        若按次计费与按Token计费同时存在，按次计费优先，可前往令牌处配置计费策略。
         </Alert>
       <Stack direction="row" alignItems="center" mb={5} spacing={2}>
         <Typography variant="h4" sx={{ flexGrow: 1 }}>可用模型</Typography>

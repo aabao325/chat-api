@@ -24,7 +24,7 @@ const panel = {
   children: [
     {
       id: 'dashboard',
-      title: '数据总览',
+      title: '总览',
       type: 'item',
       url: '/dashboard',
       icon: icons.IconDashboard,
@@ -33,7 +33,7 @@ const panel = {
     },
     {
       id: 'token',
-      title: '令牌管理',
+      title: '令牌',
       type: 'item',
       url: '/token',
       icon: icons.IconKey,
@@ -41,7 +41,7 @@ const panel = {
     },
     {
       id: 'log',
-      title: '消费日志',
+      title: '日志',
       type: 'item',
       url: '/log',
       icon: icons.IconBrandGoogleAnalytics,
@@ -57,7 +57,7 @@ const panel = {
     //},
     {
       id: 'topup',
-      title: '钱包充值',
+      title: '钱包',
       type: 'item',
       url: '/topup',
       icon: icons.IconGardenCart,
@@ -65,7 +65,7 @@ const panel = {
     },
     {
       id: 'model',
-      title: '模型计费',
+      title: '价格',
       type: 'item',
       url: '/model',
       icon: icons.IconSitemap,
@@ -73,7 +73,7 @@ const panel = {
     },
     {
       id: 'profile',
-      title: '个人设置',
+      title: '设置',
       type: 'item',
       url: '/profile',
       icon: icons.IconUserScan,
@@ -81,7 +81,7 @@ const panel = {
     },
     {
       id: 'about',
-      title: '使用教程',
+      title: '关于',
       type: 'item',
       url: '/about',
       icon: icons.IconInfoCircle,

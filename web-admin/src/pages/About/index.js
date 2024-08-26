@@ -38,15 +38,15 @@ const About = () => {
               <h3>关于</h3>
             </Layout.Header>
             <Layout.Content>
+              <p>New API 接口聚合管理平台，仅作为内部使用。</p>
+              友情链接：   
+              <br /><a href='https://chat.aabao.vip'>Fast GPT</a>：三分钟搭建 AI 知识库，专属自己的知识库问答系统
+              <br /><a href='https://web.aabao.vip'>ChatGPT Web</a>： 公益 ChatGPT 网页服务，支持 GPT4、GPTs、Mj绘画等多种AI模型
               <p>
-                可在设置页面设置关于内容，支持 HTML & Markdown
+                New API © 2024 | 基于 One API v0.5.4 © 2024
               </p>
-              new-api项目仓库地址：
-              <a href='https://github.com/ai365vip/chat-api'>
-                https://github.com/ai365vip/chat-api/
-              </a>
               <p>
-                NewAPI © 2023 CalciumIon | 基于 One API v0.5.4 © 2023 JustSong。本项目根据MIT许可证授权。
+                如有任何问题，请联系管理员微信号：【aabao325】
               </p>
             </Layout.Content>
           </Layout>
