@@ -26,6 +26,7 @@ var CompatibleChannels = []int{
 	common.ChannelTypeDeepSeek,
 	common.ChannelTypeTogetherAI,
 	common.ChannelTypeDouBao,
+	common.ChannelTypeStability,
 }
 
 func GetCompatibleChannelMeta(channelType int) (string, []string) {
