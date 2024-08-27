@@ -39,7 +39,22 @@ const About = () => {
             <Container sx={{ paddingTop: '40px' }}>
               <MainCard title="关于">
                 <Typography variant="body2">
-                  可在设置页面设置关于内容，支持 HTML & Markdown <br />
+                  New API 接口聚合管理平台，仅作为内部使用。
+                </Typography>
+                <Typography variant="body2">
+                  友情链接：
+                </Typography>
+                <Typography variant="body2" component="div">
+                  <a href='https://chat.aabao.vip'>FastGPT</a>：三分钟搭建 AI 知识库，专属自己的知识库问答系统
+                </Typography>
+                <Typography variant="body2" component="div">
+                  <a href='https://web.aabao.vip'>ChatGPT Web</a>： 公益 ChatGPT 网页服务，支持 GPT4、GPTs、Mj绘画等多种AI模型
+                </Typography>
+                <Typography variant="body2">
+                  New API © 2024 | 基于 One API v0.5.4 © 2024
+                </Typography>
+                <Typography variant="body2">
+                  如有任何问题，请联系管理员微信号：【aabao325】
                 </Typography>
               </MainCard>
             </Container>

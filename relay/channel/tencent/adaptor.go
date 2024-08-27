@@ -78,5 +78,5 @@ func (a *Adaptor) GetModelList() []string {
 }
 
 func (a *Adaptor) GetChannelName() string {
-	return "tencent"
+	return "Tencent"
 }

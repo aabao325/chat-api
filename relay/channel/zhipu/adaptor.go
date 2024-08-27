@@ -124,7 +124,7 @@ func (a *Adaptor) GetModelList() []string {
 }
 
 func (a *Adaptor) GetChannelName() string {
-	return "zhipu"
+	return "Zhipu"
 }
 
 func ConvertEmbeddingRequest(request model.GeneralOpenAIRequest) (*EmbeddingRequest, error) {

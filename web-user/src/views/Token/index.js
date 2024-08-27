@@ -268,7 +268,7 @@ export default function Token() {
     <>
       <Stack mb={5}>
         <Alert severity="info">
-        将OpenAI API基础地址https://api.openai.com替换为<BoldText>{siteInfo.server_address}</BoldText>，复制下面的密钥即可使用。
+        将 OpenAI API 基础地址 https://api.openai.com 替换为 <BoldText>{siteInfo.server_address}</BoldText> ，复制下面的密钥即可使用。
         </Alert>
       </Stack>
       <Card>

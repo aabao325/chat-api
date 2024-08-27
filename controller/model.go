@@ -171,7 +171,7 @@ func RetrieveModel(c *gin.Context) {
 func getModelType(model string) string {
 	if openAIModel, exists := openAIModelsMap[model]; exists {
 		// 特别处理 Midjourney 相关模型
-		if openAIModel.OwnedBy == "midjourney" || model == "midjourney" || model == "mj-chat" {
+		if openAIModel.OwnedBy == "midjourney" || model == "midjourney" || model == "Midjourney" || model == "mj-chat" {
 			return "Midjourney"
 		}
 		return openAIModel.OwnedBy // 使用 OwnedBy 作为其他模型类型
@@ -180,10 +180,28 @@ func getModelType(model string) string {
 	switch {
 	case strings.HasPrefix(model, "gpt-"):
 		return "OpenAI"
+	ase strings.HasPrefix(model, "net-"):
+		return "OpenAI"
 	case strings.HasPrefix(model, "claude-"):
 		return "Anthropic Claude"
+	case strings.HasPrefix(model, "mj"):
+		return "Midjourney"
+	case strings.HasPrefix(model, "swap"):
+		return "Midjourney"
 	case strings.HasPrefix(model, "glm-"):
-		return "zhipu"
+		return "Zhipu"
+	case strings.HasPrefix(model, "ERNIE-"):
+		return "Baidu"
+	case strings.HasPrefix(model, "Spark"):
+		return "Xunfei"
+	case strings.HasPrefix(model, "gemini"):
+		return "Google Gemini"
+	case strings.HasPrefix(model, "llama"):
+		return "Ollama"
+	case strings.Contains(model, "palm"):
+		return "Google PaLM"
+	case strings.Contains(model, "qwen"):
+		return "Ali"
 	default:
 		return "other"
 	}

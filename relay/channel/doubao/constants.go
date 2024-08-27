@@ -10,4 +10,5 @@ var ModelList = []string{
 	"Doubao-lite-32k",
 	"Doubao-lite-4k",
 	"Doubao-embedding",
+	"Moonshot-v1-128k",
 }

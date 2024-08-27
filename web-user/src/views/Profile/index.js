@@ -217,7 +217,7 @@ export default function Profile() {
             <Stack direction="row" alignItems="center" justifyContent="flex-start" mb={2} spacing={2}>
               <Typography variant="h2">模型</Typography>
               <Button variant="contained" onClick={goModel}>
-                计费
+                查看价格表
               </Button>
             </Stack>
 
