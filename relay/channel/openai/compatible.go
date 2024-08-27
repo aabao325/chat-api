@@ -26,7 +26,6 @@ var CompatibleChannels = []int{
 	common.ChannelTypeDeepSeek,
 	common.ChannelTypeTogetherAI,
 	common.ChannelTypeDouBao,
-	common.ChannelTypeStability,
 }
 
 func GetCompatibleChannelMeta(channelType int) (string, []string) {
@@ -53,8 +52,6 @@ func GetCompatibleChannelMeta(channelType int) (string, []string) {
 		return "Togetherai", togetherai.ModelList
 	case common.ChannelTypeDouBao:
 		return "Doubao", doubao.ModelList
-	case common.ChannelTypeStability:
-		return "Stability", stability.ModelList
 	default:
 		return "OpenAI", ModelList
 	}
