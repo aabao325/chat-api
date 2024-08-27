@@ -180,7 +180,7 @@ func getModelType(model string) string {
 	switch {
 	case strings.HasPrefix(model, "gpt-"):
 		return "OpenAI"
-	ase strings.HasPrefix(model, "net-"):
+	case strings.HasPrefix(model, "net-"):
 		return "OpenAI"
 	case strings.HasPrefix(model, "claude-"):
 		return "Anthropic Claude"
