@@ -31,24 +31,26 @@ const Header = () => {
 
       <Box sx={{ flexGrow: 1 }} />
       <Box sx={{ flexGrow: 1 }} />
-      <Stack spacing={2} direction="row">
-      <Button component={Link} variant="text" to="/home" color={pathname === '/home' ? 'primary' : 'inherit'}>
+      <Stack spacing={1} direction="row" alignItems="center">
+        <Button component={Link} variant="text" to="/home" color={pathname === '/home' ? 'primary' : 'inherit'} sx={{ fontSize: '0.8rem', padding: '6px 12px' }}>
           首页
         </Button>
-        <Button component={Link} variant="text" to="/about" color={pathname === '/about' ? 'primary' : 'inherit'}>
+        <Button component={Link} variant="text" to="/about" color={pathname === '/about' ? 'primary' : 'inherit'} sx={{ fontSize: '0.8rem', padding: '6px 12px' }}>
           关于
         </Button>
         <ThemeButton />
         {account.user ? (
-          <Button component={Link} variant="contained" to="/login" color="primary">
+          <Button component={Link} variant="contained" to="/login" color="primary" sx={{ fontSize: '0.8rem', padding: '6px 12px' }}>
             控制台
           </Button>
         ) : (
-          <Button component={Link} variant="contained" to="/login" color="primary">
+          <Button component={Link} variant="contained" to="/login" color="primary" sx={{ fontSize: '0.8rem', padding: '6px 12px' }}>
             登录
           </Button>
         )}
       </Stack>
+
+
     </>
   );
 };
