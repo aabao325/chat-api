@@ -35,23 +35,25 @@ func GetCompatibleChannelMeta(channelType int) (string, []string) {
 	case common.ChannelType360:
 		return "360", ai360.ModelList
 	case common.ChannelTypeMoonshot:
-		return "moonshot", moonshot.ModelList
+		return "Moonshot", moonshot.ModelList
 	case common.ChannelTypeBaichuan:
-		return "baichuan", baichuan.ModelList
+		return "Baichuan", baichuan.ModelList
 	case common.ChannelTypeMinimax:
-		return "minimax", minimax.ModelList
+		return "Minimax", minimax.ModelList
 	case common.ChannelTypeMistral:
-		return "mistralai", mistral.ModelList
+		return "Mistralai", mistral.ModelList
 	case common.ChannelTypeGroq:
-		return "groq", groq.ModelList
+		return "Groq", groq.ModelList
 	case common.ChannelTypeLingYiWanWu:
 		return "lingyiwanwu", lingyiwanwu.ModelList
 	case common.ChannelTypeDeepSeek:
-		return "deepseek", deepseek.ModelList
+		return "Deepseek", deepseek.ModelList
 	case common.ChannelTypeTogetherAI:
-		return "togetherai", togetherai.ModelList
+		return "Togetherai", togetherai.ModelList
 	case common.ChannelTypeDouBao:
-		return "doubao", doubao.ModelList
+		return "Doubao", doubao.ModelList
+	case common.ChannelTypeDouBao:
+		return "Stability", stability.ModelList
 	default:
 		return "OpenAI", ModelList
 	}

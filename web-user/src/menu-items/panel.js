@@ -1,5 +1,6 @@
 // assets
 import {
+  IconHome,
   IconDashboard,
   IconSitemap,
   IconArticle,
@@ -14,7 +15,7 @@ import {
 } from '@tabler/icons-react';
 
 // constant
-const icons = { IconDashboard, IconSitemap, IconArticle, IconCoin, IconAdjustments, IconKey, IconGardenCart, IconUser, IconUserScan,IconInfoCircle,IconBrandGoogleAnalytics };
+const icons = { IconHome, IconDashboard, IconSitemap, IconArticle, IconCoin, IconAdjustments, IconKey, IconGardenCart, IconUser, IconUserScan,IconInfoCircle,IconBrandGoogleAnalytics };
 
 // ==============================|| DASHBOARD MENU ITEMS ||============================== //
 
@@ -22,6 +23,15 @@ const panel = {
   id: '/',
   type: 'group',
   children: [
+    {
+      id: 'home',
+      title: '首页',
+      type: 'item',
+      url: '/home',
+      icon: icons.IconHome,
+      breadcrumbs: false,
+      isAdmin: false
+    },
     {
       id: 'dashboard',
       title: '总览',
@@ -37,14 +47,6 @@ const panel = {
       type: 'item',
       url: '/token',
       icon: icons.IconKey,
-      breadcrumbs: false
-    },
-    {
-      id: 'log',
-      title: '日志',
-      type: 'item',
-      url: '/log',
-      icon: icons.IconBrandGoogleAnalytics,
       breadcrumbs: false
     },
     //{
@@ -72,13 +74,21 @@ const panel = {
       breadcrumbs: false
     },
     {
-      id: 'profile',
-      title: '设置',
+      id: 'log',
+      title: '日志',
       type: 'item',
-      url: '/profile',
-      icon: icons.IconUserScan,
-      breadcrumbs: false,
+      url: '/log',
+      icon: icons.IconBrandGoogleAnalytics,
+      breadcrumbs: false
     },
+    // {
+    //   id: 'profile',
+    //   title: '设置',
+    //   type: 'item',
+    //   url: '/profile',
+    //   icon: icons.IconUserScan,
+    //   breadcrumbs: false,
+    // },
     {
       id: 'about',
       title: '关于',
