@@ -275,9 +275,9 @@ func updateOptionMap(key string, value string) (err error) {
 	case "GitHubClientSecret":
 		config.GitHubClientSecret = value
 	case "LinuxDoClientId":
-		common.LinuxDoClientId = value
+		config.LinuxDoClientId = value
 	case "LinuxDoClientSecret":
-		common.LinuxDoClientSecret = value
+		config.LinuxDoClientSecret = value
 	case "Footer":
 		config.Footer = value
 	case "SystemName":
