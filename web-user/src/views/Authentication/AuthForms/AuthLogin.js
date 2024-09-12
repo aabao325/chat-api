@@ -37,7 +37,7 @@ import Github from 'assets/images/icons/github.svg';
 import LinuxDo from 'assets/images/icons/linuxdo.svg';
 import Wechat from 'assets/images/icons/wechat.svg';
 import { onGitHubOAuthClicked } from 'utils/common';
-import { onLinuxDoAuthClicked } from 'utils/common';
+import { onLinuxDoOAuthClicked } from 'utils/common';
 import Turnstile from "react-turnstile";
 // ============================|| FIREBASE - LOGIN ||============================ //
 
@@ -99,7 +99,7 @@ const LoginForm = ({ ...others }) => {
                 <Button
                   disableElevation
                   fullWidth
-                  onClick={() => onLinuxDoAuthClicked()}
+                  onClick={() => onLinuxDoOAuthClicked()}
                   size="large"
                   variant="outlined"
                   sx={{
