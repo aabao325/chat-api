@@ -293,7 +293,7 @@ const TopupCard = () => {
         )}
         {wx === 'true' && (
           <Button variant="contained" onClick={() => preTopUp('wx')} sx={{ ml: 1 }}>
-            微信
+            微信支付
           </Button>
         )}
       </>

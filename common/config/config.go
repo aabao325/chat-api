@@ -53,7 +53,9 @@ var PasswordLoginEnabled = true
 var PasswordRegisterEnabled = true
 var EmailVerificationEnabled = false
 var GitHubOAuthEnabled = false
+var LinuxDoOAuthEnabled = false
 var WeChatAuthEnabled = false
+
 var TurnstileCheckEnabled = false
 var RegisterEnabled = true
 var ApproximateTokenEnabled = false
@@ -83,6 +85,9 @@ var Uids = ""
 
 var GitHubClientId = ""
 var GitHubClientSecret = ""
+
+var LinuxDoClientId = ""
+var LinuxDoClientSecret = ""
 
 var WeChatServerAddress = ""
 var WeChatServerToken = ""

@@ -34,8 +34,10 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import Github from 'assets/images/icons/github.svg';
+import LinuxDo from 'assets/images/icons/linuxdo.svg';
 import Wechat from 'assets/images/icons/wechat.svg';
 import { onGitHubOAuthClicked } from 'utils/common';
+import { onLinuxDoAuthClicked } from 'utils/common';
 import Turnstile from "react-turnstile";
 // ============================|| FIREBASE - LOGIN ||============================ //
 
@@ -65,7 +67,7 @@ const LoginForm = ({ ...others }) => {
   }, []);
 
   let tripartiteLogin = false;
-  if (siteInfo.github_oauth || siteInfo.wechat_login) {
+  if (siteInfo.github_oauth || siteInfo.linuxdo_oauth || siteInfo.wechat_login) {
     tripartiteLogin = true;
   }
 
@@ -91,6 +93,29 @@ const LoginForm = ({ ...others }) => {
     <>
       {tripartiteLogin && (
         <Grid container direction="column" justifyContent="center" spacing={2}>
+          {siteInfo.linuxdo_oauth && (
+            <Grid item xs={12}>
+              <AnimateButton>
+                <Button
+                  disableElevation
+                  fullWidth
+                  onClick={() => onLinuxDoAuthClicked()}
+                  size="large"
+                  variant="outlined"
+                  sx={{
+                    color: 'grey.700',
+                    backgroundColor: theme.palette.grey[50],
+                    borderColor: theme.palette.grey[100]
+                  }}
+                >
+                  <Box sx={{ mr: { xs: 1, sm: 2, width: 20 }, display: 'flex', alignItems: 'center' }}>
+                    <img src={LinuxDo} alt="linuxdo" width={25} height={25} style={{ marginRight: matchDownSM ? 8 : 16 }} />
+                  </Box>
+                  使用 Linux Do 登录
+                </Button>
+              </AnimateButton>
+            </Grid>
+          )}
           {siteInfo.github_oauth && (
             <Grid item xs={12}>
               <AnimateButton>

@@ -124,6 +124,17 @@ export async function onGitHubOAuthClicked(github_client_id, openInNewTab = fals
   }
 }
 
+export async function onLinuxDoOAuthClicked(linuxdo_client_id, openInNewTab = false) {
+  const state = await getOAuthState();
+  if (!state) return;
+  let url = `https://connect.linux.do/oauth2/authorize?client_id=${linuxdo_client_id}&response_type=code&state=${state}&scope=user:profile`;
+  if (openInNewTab) {
+    window.open(url);
+  } else {
+    window.location.href = url;
+  }
+}
+
 export function isAdmin() {
   let user = localStorage.getItem('user');
   if (!user) return false;

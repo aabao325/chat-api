@@ -266,6 +266,13 @@ export default function Profile() {
                     </Button>
                   </Grid>
                 )}
+                {status.linuxdo_oauth && !inputs.github_id && (
+                  <Grid xs={12} md={4}>
+                    <Button variant="contained" onClick={() => onGitHubOAuthClicked(status.github_client_id, true)}>
+                      绑定LinuxDo账号
+                    </Button>
+                  </Grid>
+                )}
                 <Grid xs={12} md={4}>
                   <Button
                     variant="contained"

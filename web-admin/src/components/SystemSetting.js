@@ -12,6 +12,9 @@ const SystemSetting = () => {
         GitHubOAuthEnabled: '',
         GitHubClientId: '',
         GitHubClientSecret: '',
+        LinuxDoOAuthEnabled: '',
+        LinuxDoClientId: '',
+        LinuxDoClientSecret: '',
         Notice: '',
         SMTPServer: '',
         SMTPPort: '',
@@ -125,6 +128,7 @@ const SystemSetting = () => {
         await updateOption('EmailVerificationEnabled', inputs.EmailVerificationEnabled);
         await updateOption('GitHubOAuthEnabled', inputs.GitHubOAuthEnabled);
         await updateOption('WeChatAuthEnabled', inputs.WeChatAuthEnabled);
+        await updateOption('LinuxDoOAuthEnabled', inputs.LinuxDoOAuthEnabled);
         await updateOption('RegisterEnabled', inputs.RegisterEnabled);
         await updateOption('TurnstileCheckEnabled', inputs.TurnstileCheckEnabled);
         await updateOption('GroupEnable', inputs.GroupEnable);
@@ -224,6 +228,18 @@ const SystemSetting = () => {
             await updateOption('GitHubClientSecret', inputs.GitHubClientSecret);
         }
         setOriginInputs(inputs);
+    };
+
+    const submitLinuxDoOAuth = async () => {
+        if (originInputs['LinuxDoClientId'] !== inputs.LinuxDoClientId) {
+            await updateOption('LinuxDoClientId', inputs.LinuxDoClientId);
+        }
+        if (
+            originInputs['LinuxDoClientSecret'] !== inputs.LinuxDoClientSecret &&
+            inputs.LinuxDoClientSecret !== ''
+        ) {
+            await updateOption('LinuxDoClientSecret', inputs.LinuxDoClientSecret);
+        }
     };
 
     const submitTurnstile = async () => {
@@ -336,6 +352,14 @@ const SystemSetting = () => {
                                     onChange={(e) => handleCheckboxChange('WeChatAuthEnabled', e.target.checked)}
                                 />
                                 <Typography.Text>允许通过微信登录 & 注册</Typography.Text>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <Checkbox
+                                    checked={inputs.LinuxDoOAuthEnabled === 'true'}
+                                    name='LinuxDoOAuthEnabled'
+                                    onChange={(e) => handleCheckboxChange('LinuxDoOAuthEnabled', e.target.checked)}
+                                />
+                                <Typography.Text>允许通过Linux Do登录 & 注册</Typography.Text>
                             </div>
                         
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexBasis: '50%' }}>
@@ -567,6 +591,40 @@ const SystemSetting = () => {
                     </div>
                 </Card>
                 <Button onClick={submitGitHubOAuth} style={{ width: '10%', padding: '10px 0', borderRadius: '8px', backgroundColor: '#1890ff', color: '#fff', fontWeight: 'bold', marginBottom: '20px' }}>保存 GitHub 设置</Button>
+                <Divider style={{ marginTop: '20px', marginBottom: '10px' }} />
+
+                <Divider style={{ marginTop: '20px' , marginBottom: '10px' }}/>
+                <Form widths={3}>
+                <Typography.Title style={{ marginBottom: '10px' }} heading={5}>配置 LINUX DO Oauth</Typography.Title>
+                <Typography.Text style={{ marginBottom: '10px' }}>
+                    用以支持通过 LINUX DO 进行登录注册，<a href='https://connect.linux.do' target='_blank'>点击此处</a>管理你的 LINUX DO OAuth
+                </Typography.Text>
+                <Card style={{ padding: '20px',width: '80%' , marginBottom: '20px', border: '1px solid #e0e0e0', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
+                    <div style={{ marginBottom: '10px' }}>
+                        Homepage URL 填 <code>{inputs.ServerAddress}</code>，Authorization callback URL 填 <code>{`${inputs.ServerAddress}/oauth/linuxdo`}</code>
+                    </div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+                        <div style={{ flex: '1 1 calc(50% - 20px)' }}>
+                            <Typography.Text strong>LINUX DO Client ID</Typography.Text>
+                            <Input
+                                placeholder='输入你注册的 LINUX DO OAuth 的 ID'
+                                value={inputs.LinuxDoClientId}
+                                name='LinuxDoClientId'
+                                onChange={(value) => handleInputChange('LinuxDoClientId', value)}
+                            />
+                        </div>
+                        <div style={{ flex: '1 1 calc(50% - 20px)' }}>
+                            <Typography.Text strong>LINUX DO Client Secret</Typography.Text>
+                            <Input
+                                placeholder='敏感信息不会发送到前端显示'
+                                value={inputs.LinuxDoClientSecret}
+                                name='LinuxDoClientSecret'
+                                onChange={(value) => handleInputChange('LinuxDoClientSecret', value)}
+                            />
+                        </div>
+                    </div>
+                </Card>
+                <Button onClick={submitLinuxDoOAuth} style={{ width: '10%', padding: '10px 0', borderRadius: '8px', backgroundColor: '#1890ff', color: '#fff', fontWeight: 'bold', marginBottom: '20px' }}>保存 LINUX DO OAuth 设置</Button>
                 <Divider style={{ marginTop: '20px', marginBottom: '10px' }} />
 
                 <Typography.Title style={{ marginBottom: '10px' }} heading={5}>配置 WeChat Server</Typography.Title>

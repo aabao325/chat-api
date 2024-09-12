@@ -49,6 +49,14 @@ const panel = {
       icon: icons.IconKey,
       breadcrumbs: false
     },
+    {
+      id: 'log',
+      title: '日志',
+      type: 'item',
+      url: '/log',
+      icon: icons.IconBrandGoogleAnalytics,
+      breadcrumbs: false
+    },
     //{
     //  id: 'mjlog',
     //  title: 'MJ绘画',s
@@ -71,14 +79,6 @@ const panel = {
       type: 'item',
       url: '/model',
       icon: icons.IconSitemap,
-      breadcrumbs: false
-    },
-    {
-      id: 'log',
-      title: '日志',
-      type: 'item',
-      url: '/log',
-      icon: icons.IconBrandGoogleAnalytics,
       breadcrumbs: false
     },
     // {

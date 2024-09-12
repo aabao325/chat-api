@@ -32,6 +32,7 @@ func InitOptionMap() {
 	config.OptionMap["EmailVerificationEnabled"] = strconv.FormatBool(config.EmailVerificationEnabled)
 	config.OptionMap["GitHubOAuthEnabled"] = strconv.FormatBool(config.GitHubOAuthEnabled)
 	config.OptionMap["WeChatAuthEnabled"] = strconv.FormatBool(config.WeChatAuthEnabled)
+	config.OptionMap["LinuxDoOAuthEnabled"] = strconv.FormatBool(config.LinuxDoOAuthEnabled)
 	config.OptionMap["TurnstileCheckEnabled"] = strconv.FormatBool(config.TurnstileCheckEnabled)
 	config.OptionMap["RegisterEnabled"] = strconv.FormatBool(config.RegisterEnabled)
 	config.OptionMap["AutomaticDisableChannelEnabled"] = strconv.FormatBool(config.AutomaticDisableChannelEnabled)
@@ -75,6 +76,8 @@ func InitOptionMap() {
 	config.OptionMap["UserGroupEnabled"] = strconv.FormatBool(config.UserGroupEnabled)
 	config.OptionMap["GitHubClientId"] = ""
 	config.OptionMap["GitHubClientSecret"] = ""
+	config.OptionMap["LinuxDoClientId"] = ""
+	config.OptionMap["LinuxDoClientSecret"] = ""
 	config.OptionMap["WeChatServerAddress"] = ""
 	config.OptionMap["WeChatServerToken"] = ""
 	config.OptionMap["WeChatAccountQRCodeImageURL"] = ""
@@ -184,6 +187,8 @@ func updateOptionMap(key string, value string) (err error) {
 			config.GitHubOAuthEnabled = boolValue
 		case "WeChatAuthEnabled":
 			config.WeChatAuthEnabled = boolValue
+		case "LinuxDoOAuthEnabled":
+			config.LinuxDoOAuthEnabled = boolValue
 		case "TurnstileCheckEnabled":
 			config.TurnstileCheckEnabled = boolValue
 		case "RegisterEnabled":
@@ -269,6 +274,10 @@ func updateOptionMap(key string, value string) (err error) {
 		config.GitHubClientId = value
 	case "GitHubClientSecret":
 		config.GitHubClientSecret = value
+	case "LinuxDoClientId":
+		common.LinuxDoClientId = value
+	case "LinuxDoClientSecret":
+		common.LinuxDoClientSecret = value
 	case "Footer":
 		config.Footer = value
 	case "SystemName":
