@@ -504,7 +504,7 @@ const SystemSetting = () => {
                         />
                     </div>
                     <Button onClick={submitEmailDomainWhitelist} style={{ width: '10%', padding: '10px 0', borderRadius: '8px', backgroundColor: '#1890ff', color: '#fff', fontWeight: 'bold', marginBottom: '20px' }}>保存邮箱域名白名单设置</Button>
-                </Form>
+                    </Form>
                 <Divider style={{ marginTop: '20px', marginBottom: '10px'}} />
                 <Form widths={3}>
                     <Typography.Title style={{ marginBottom: '10px' }} heading={5}>配置 SMTP</Typography.Title>
@@ -591,7 +591,7 @@ const SystemSetting = () => {
                     </div>
                 </Card>
                 <Button onClick={submitGitHubOAuth} style={{ width: '10%', padding: '10px 0', borderRadius: '8px', backgroundColor: '#1890ff', color: '#fff', fontWeight: 'bold', marginBottom: '20px' }}>保存 GitHub 设置</Button>
-                <Divider style={{ marginTop: '20px', marginBottom: '10px' }} />
+                </Form>
 
                 <Divider style={{ marginTop: '20px' , marginBottom: '10px' }}/>
                 <Form widths={3}>
@@ -625,8 +625,9 @@ const SystemSetting = () => {
                     </div>
                 </Card>
                 <Button onClick={submitLinuxDoOAuth} style={{ width: '10%', padding: '10px 0', borderRadius: '8px', backgroundColor: '#1890ff', color: '#fff', fontWeight: 'bold', marginBottom: '20px' }}>保存 LINUX DO OAuth 设置</Button>
-                <Divider style={{ marginTop: '20px', marginBottom: '10px' }} />
+                </Form>
 
+                <Divider style={{ marginTop: '20px', marginBottom: '10px' }} />
                 <Typography.Title style={{ marginBottom: '10px' }} heading={5}>配置 WeChat Server</Typography.Title>
                 <Typography.Text style={{ marginBottom: '10px' }}>
                     用以支持通过微信进行登录注册，<a href='https://github.com/songquanpeng/wechat-server' target='_blank'>点击此处</a>了解 WeChat Server
@@ -692,7 +693,7 @@ const SystemSetting = () => {
                     </div>
                 </Card>
                 <Button onClick={submitTurnstile} style={{ width: '10%', padding: '10px 0', borderRadius: '8px', backgroundColor: '#1890ff', color: '#fff', fontWeight: 'bold' }}>保存 Turnstile 设置</Button>
-                </Form>
+                
 
 
             </Layout>
