@@ -35,7 +35,7 @@ func getLinuxDoUserInfoByCode(code string) (*LinuxDoUser, error) {
 	if code == "" {
 		return nil, errors.New("无效的参数")
 	}
-	auth := base64.StdEncoding.EncodeToString([]byte(common.LinuxDoClientId + ":" + common.LinuxDoClientSecret))
+	auth := base64.StdEncoding.EncodeToString([]byte(config.LinuxDoClientId + ":" + config.LinuxDoClientSecret))
 	form := url.Values{
 		"grant_type": {"authorization_code"},
 		"code":       {code},
@@ -99,7 +99,7 @@ func LinuxDoOAuth(c *gin.Context) {
 		return
 	}
 
-	if !common.LinuxDoOAuthEnabled {
+	if !config.LinuxDoOAuthEnabled {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
 			"message": "管理员未开启通过 LINUX DO 登录以及注册",
@@ -128,7 +128,7 @@ func LinuxDoOAuth(c *gin.Context) {
 			return
 		}
 	} else {
-		if common.RegisterEnabled {
+		if config.RegisterEnabled {
 			affCode := c.Query("aff")
 			user.InviterId, _ = model.GetUserIdByAffCode(affCode)
 
@@ -168,7 +168,7 @@ func LinuxDoOAuth(c *gin.Context) {
 }
 
 func LinuxDoBind(c *gin.Context) {
-	if !common.LinuxDoOAuthEnabled {
+	if !config.LinuxDoOAuthEnabled {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
 			"message": "管理员未开启通过 LINUX DO 登录以及注册",
