@@ -42,6 +42,14 @@ const panel = {
       isAdmin: false
     },
     {
+      id: 'model',
+      title: '价格',
+      type: 'item',
+      url: '/model',
+      icon: icons.IconSitemap,
+      breadcrumbs: false
+    },
+    {
       id: 'token',
       title: '令牌',
       type: 'item',
@@ -73,14 +81,7 @@ const panel = {
       icon: icons.IconGardenCart,
       breadcrumbs: false
     },
-    {
-      id: 'model',
-      title: '价格',
-      type: 'item',
-      url: '/model',
-      icon: icons.IconSitemap,
-      breadcrumbs: false
-    },
+    
     // {
     //   id: 'profile',
     //   title: '设置',
