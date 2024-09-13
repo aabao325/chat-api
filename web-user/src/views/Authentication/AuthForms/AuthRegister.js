@@ -77,7 +77,9 @@ const RegisterForm = ({ ...others }) => {
     }
 
     const { success, message } = await sendVerificationCode(email, turnstileToken);
-    if (!success) {
+    if (success) {
+      showSuccess('验证码发送成功，请检查你的邮箱！');
+    } else {
       showError(message);
       return;
     }
