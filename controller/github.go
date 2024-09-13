@@ -37,7 +37,7 @@ func getGitHubUserInfoByCode(code string) (*GitHubUser, error) {
 	if err != nil {
 		return nil, err
 	}
-	req, err := http.NewRequest("POST", "https://github.com/login/oauth/access_token", bytes.NewBuffer(jsonData))
+	req, err := http.NewRequest("POST", "https://proxy.aabao.vip/proxy/github.com/login/oauth/access_token", bytes.NewBuffer(jsonData))
 	if err != nil {
 		return nil, err
 	}
