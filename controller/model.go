@@ -190,6 +190,10 @@ func getModelType(model string) string {
 		return "Midjourney"
 	case strings.HasPrefix(model, "swap"):
 		return "Midjourney"
+	case strings.HasPrefix(model, "baichuan"):
+		return "Baichuan"
+	case strings.HasPrefix(model, "mistral"):
+		return "Mistralai"
 	case strings.HasPrefix(model, "glm-"):
 		return "Zhipu"
 	case strings.HasPrefix(model, "ERNIE-"):

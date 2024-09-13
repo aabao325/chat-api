@@ -223,8 +223,16 @@ export default function Log() {
                             modelInfo.model_ratio_2.toFixed(4) : '无'}
                         </TableCell>
                         <TableCell align="left">
-                          {modelInfo.model_ratio !== undefined && modelInfo.model_ratio !== 0 ?
-                            formatNumber(modelInfo.model_ratio * 0.002) : '无'}
+                          {modelInfo.model_ratio_2 !== undefined && modelInfo.model_ratio_2 !== 0 ?
+                            (() => {
+                              const numStr = modelInfo.model_ratio_2.toString();
+                              const decimalPart = numStr.split('.')[1];
+                              if (decimalPart && decimalPart.length > 4) {
+                                return modelInfo.model_ratio_2.toFixed(4);
+                              } else {
+                                return numStr;
+                              }
+                            })() : '无'}
                         </TableCell>
                         <TableCell align="left">
                           {modelInfo.model_ratio !== undefined && modelInfo.model_ratio !== 0 ?
