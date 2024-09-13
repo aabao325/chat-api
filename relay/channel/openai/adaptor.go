@@ -81,7 +81,7 @@ func (a *Adaptor) SetupRequestHeader(c *gin.Context, req *http.Request, meta *ut
 	return nil
 }
 
-func (a *Adaptor) ConvertRequest(c *gin.Context, relayMode int, request *model.GeneralOpenAIRequest) (any, error) {
+func (a *Adaptor) ConvertRequest(c *gin.Context, meta *util.RelayMeta, request *model.GeneralOpenAIRequest) (any, error) {
 	if request == nil {
 		return nil, errors.New("request is nil")
 	}
@@ -121,7 +121,7 @@ func (a *Adaptor) DoResponse(c *gin.Context, resp *http.Response, meta *util.Rel
 				return "", nil, &model.ErrorWithStatusCode{
 					Error: model.Error{
 						Message: "No completion tokens generated",
-						Type:    "one_api_error",
+						Type:    "chat_api_error",
 						Param:   "completionTokens",
 						Code:    500,
 					},

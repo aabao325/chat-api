@@ -20,7 +20,7 @@ import { IconBrandWechat, IconBrandGithub, IconMail } from '@tabler/icons-react'
 import Label from 'ui-component/Label';
 import { API } from 'utils/api';
 import { showError, showSuccess } from 'utils/common';
-import { onGitHubOAuthClicked } from 'utils/common';
+import { onGitHubOAuthClicked, onLinuxDoOAuthClicked  } from 'utils/common';
 import * as Yup from 'yup';
 import WechatModal from 'views/Authentication/AuthForms/WechatModal';
 import { useSelector } from 'react-redux';
@@ -158,6 +158,9 @@ export default function Profile() {
               <Label variant="ghost" color={inputs.github_id ? 'primary' : 'default'}>
                 <IconBrandGithub /> {inputs.github_id || '未绑定'}
               </Label>
+              <Label variant="ghost" color={inputs.linuxdo_id ? 'primary' : 'default'}>
+                <IconBrandGithub /> {inputs.linuxdo_id || '未绑定'}
+              </Label>
               <Label variant="ghost" color={inputs.email ? 'primary' : 'default'}>
                 <IconMail /> {inputs.email || '未绑定'}
               </Label>
@@ -266,9 +269,9 @@ export default function Profile() {
                     </Button>
                   </Grid>
                 )}
-                {status.linuxdo_oauth && !inputs.github_id && (
+                {status.linuxdo_oauth && !inputs.linuxdo_id && (
                   <Grid xs={12} md={4}>
-                    <Button variant="contained" onClick={() => onGitHubOAuthClicked(status.github_client_id, true)}>
+                    <Button variant="contained" onClick={() => onLinuxDoOAuthClicked(status.linuxdo_client_id, true)}>
                       绑定LinuxDo账号
                     </Button>
                   </Grid>

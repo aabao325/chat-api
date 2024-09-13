@@ -152,13 +152,12 @@ const ProfileSection = () => {
                       </ListItemIcon>
                       <ListItemText primary={<Typography variant="body2">设置</Typography>} />
                     </ListItemButton>
-
-                    {/* <ListItemButton sx={{ borderRadius: `${customization.borderRadius}px` }} onClick={() => navigate('/home')}>
+                    <ListItemButton sx={{ borderRadius: `${customization.borderRadius}px` }} onClick={() => navigate('/home')}>
                       <ListItemIcon>
                         <IconHome stroke={1.5} size="1.3rem" />
                       </ListItemIcon>
                       <ListItemText primary={<Typography variant="body2">首页</Typography>} />
-                    </ListItemButton> */}
+                    </ListItemButton>
 
                     <ListItemButton sx={{ borderRadius: `${customization.borderRadius}px` }} onClick={handleLogout}>
                       <ListItemIcon>

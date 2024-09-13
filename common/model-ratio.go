@@ -32,6 +32,10 @@ var ModelRatio = map[string]float64{
 	"gpt-4o-mini-2024-07-18":  0.075,
 	"gpt-4o-2024-08-06":       1.25,
 	"chatgpt-4o-latest":       2.5,
+	"o1-preview":              7.5,
+	"o1-preview-2024-09-12":   7.5,
+	"o1-mini":                 1.5,
+	"o1-mini-2024-09-12":      1.5,
 	"gpt-3.5-turbo":           0.25, // $0.0005 / 1K tokens
 	"gpt-3.5-turbo-0301":      0.75,
 	"gpt-3.5-turbo-0613":      0.75,
@@ -99,6 +103,8 @@ var ModelRatio = map[string]float64{
 	"gemini-1.0-pro-001":        1,
 	"gemini-1.5-pro":            1,
 	"gemini-1.5-pro-exp-0801":   1,
+	"gemini-1.5-pro-exp-0827":   1,
+	"gemini-1.5-flash-exp-0827": 1,
 	// https://open.bigmodel.cn/pricing
 	"glm-4":                     0.1 * RMB,
 	"glm-4v":                    0.1 * RMB,
@@ -197,7 +203,41 @@ var DalleImagePromptLengthLimitations = map[string]int{
 }
 
 var ModelPrice = map[string]float64{
-	"gpt-4-gizmo-*": 0.1,
+	"gpt-4-gizmo-*":      0.1,
+	"mj_imagine":         0.1,
+	"mj_variation":       0.1,
+	"mj_reroll":          0.1,
+	"mj_blend":           0.1,
+	"mj_describe":        0.05,
+	"mj_upscale":         0.05,
+	"mj_action":          0.1,
+	"mj_inpaint":         0.1,
+	"mj_swapface":        0.1,
+	"mj_shorten":         0.1,
+	"mj_uploads":         0.05,
+	"mj_turbo_imagine":   0.1,
+	"mj_turbo_variation": 0.1,
+	"mj_turbo_reroll":    0.1,
+	"mj_turbo_blend":     0.1,
+	"mj_turbo_describe":  0.1,
+	"mj_turbo_upscale":   0.05,
+	"mj_turbo_action":    0.1,
+	"mj_turbo_inpaint":   0.1,
+	"mj_turbo_swapface":  0.1,
+	"mj_turbo_shorten":   0.1,
+	"mj_turbo_uploads":   0.05,
+	"mj_relax_imagine":   0.1,
+	"mj_relax_variation": 0.1,
+	"mj_relax_reroll":    0.1,
+	"mj_relax_blend":     0.1,
+	"mj_relax_describe":  0.1,
+	"mj_relax_upscale":   0.05,
+	"mj_relax_action":    0.1,
+	"mj_relax_inpaint":   0.1,
+	"mj_relax_swapface":  0.1,
+	"mj_relax_shorten":   0.1,
+	"mj_relax_uploads":   0.05,
+	"midjourney":         0.1,
 }
 
 func ModelRatioJSONString() string {
@@ -294,6 +334,9 @@ func GetCompletionRatio(name string) float64 {
 			return 3
 		}
 		return 2
+	}
+	if strings.HasPrefix(name, "o1-") {
+		return 4
 	}
 	if strings.HasPrefix(name, "chatgpt-4o") {
 		return 3

@@ -136,7 +136,7 @@ export default function Log() {
   return (
     <Box sx={{ maxWidth: 1200, margin: 'auto', padding: 3 }}>
       <Alert severity="info">
-        若按次计费与按Token计费同时存在，按Token计费优先，可前往令牌处配置计费策略。
+        按次计费与按token计费同时存在 按次计费优先。
         </Alert>
       <Stack direction="row" alignItems="center" mb={5} spacing={2}>
         <Typography variant="h4" sx={{ flexGrow: 1 }}>可用模型</Typography>
@@ -218,23 +218,10 @@ export default function Log() {
                         <TableCell component="th" scope="row" align="left" sx={{ fontWeight: 'medium' }}>
                           {modelInfo.model}
                         </TableCell>
-                        {/* <TableCell align="left">
-                          {modelInfo.model_ratio_2 !== undefined && modelInfo.model_ratio_2 !== 0 ?
-                            modelInfo.model_ratio_2.toFixed(4) : '无'}
-                        </TableCell> */}
                         <TableCell align="left">
                           {modelInfo.model_ratio_2 !== undefined && modelInfo.model_ratio_2 !== 0 ?
-                            (() => {
-                              const numStr = modelInfo.model_ratio_2.toString();
-                              const decimalPart = numStr.split('.')[1];
-                              if (decimalPart && decimalPart.length > 4) {
-                                return modelInfo.model_ratio_2.toFixed(4);
-                              } else {
-                                return numStr;
-                              }
-                            })() : '无'}
+                            modelInfo.model_ratio_2.toFixed(4) : '无'}
                         </TableCell>
-
                         <TableCell align="left">
                           {modelInfo.model_ratio !== undefined && modelInfo.model_ratio !== 0 ?
                             formatNumber(modelInfo.model_ratio * 0.002) : '无'}

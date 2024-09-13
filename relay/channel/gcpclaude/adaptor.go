@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"net/http"
 
+	"one-api/common/config"
 	"one-api/relay/channel"
 	"one-api/relay/channel/anthropic"
 	"one-api/relay/channel/openai"
@@ -83,11 +84,17 @@ func (a *Adaptor) ConvertImageRequest(request *model.ImageRequest) (any, error) 
 	}
 	return request, nil
 }
-func (a *Adaptor) ConvertRequest(c *gin.Context, relayMode int, request *model.GeneralOpenAIRequest) (any, error) {
+func (a *Adaptor) ConvertRequest(c *gin.Context, meta *util.RelayMeta, request *model.GeneralOpenAIRequest) (any, error) {
 	if request == nil {
 		return nil, errors.New("request is nil")
 	}
-	return ConvertRequest(*request), nil
+	valueclaudeoriginalrequest, _ := c.Get("claude_original_request")
+	isclaudeoriginalrequest, _ := valueclaudeoriginalrequest.(bool)
+	if !isclaudeoriginalrequest {
+		return ConvertRequest(*request), nil
+	} else {
+		return ConverClaudeRequest(*request), nil
+	}
 
 }
 
@@ -104,6 +111,20 @@ func (a *Adaptor) DoResponse(c *gin.Context, resp *http.Response, meta *util.Rel
 			err, _, responseText = anthropic.StreamHandler(c, resp)
 			usage = openai.ResponseText2Usage(responseText, meta.ActualModelName, meta.PromptTokens)
 
+			if usage.CompletionTokens == 0 {
+				if config.BlankReplyRetryEnabled {
+					return "", nil, &model.ErrorWithStatusCode{
+						Error: model.Error{
+							Message: "No completion tokens generated",
+							Type:    "chat_api_error",
+							Param:   "completionTokens",
+							Code:    500,
+						},
+						StatusCode: 500,
+					}
+				}
+			}
+
 			aitext = responseText
 		} else {
 			err, usage, aitext = anthropic.Handler(c, resp, meta.PromptTokens, meta.ActualModelName)
@@ -114,7 +135,19 @@ func (a *Adaptor) DoResponse(c *gin.Context, resp *http.Response, meta *util.Rel
 			var responseText string
 			err, _, responseText = anthropic.ClaudeStreamHandler(c, resp)
 			usage = openai.ResponseText2Usage(responseText, meta.ActualModelName, meta.PromptTokens)
-
+			if usage.CompletionTokens == 0 {
+				if config.BlankReplyRetryEnabled {
+					return "", nil, &model.ErrorWithStatusCode{
+						Error: model.Error{
+							Message: "No completion tokens generated",
+							Type:    "chat_api_error",
+							Param:   "completionTokens",
+							Code:    500,
+						},
+						StatusCode: 500,
+					}
+				}
+			}
 			aitext = responseText
 		} else {
 			err, usage, aitext = anthropic.ClaudeHandler(c, resp, meta.PromptTokens, meta.ActualModelName)

@@ -13,6 +13,7 @@ const config = {
     github_client_id: '',
     github_oauth: false,
     linuxdo_oauth: false,
+    linuxdo_client_id: '',
     logo: '',
     quota_per_unit: 500000,
     server_address: '',

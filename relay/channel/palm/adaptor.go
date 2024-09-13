@@ -30,7 +30,7 @@ func (a *Adaptor) SetupRequestHeader(c *gin.Context, req *http.Request, meta *ut
 	return nil
 }
 
-func (a *Adaptor) ConvertRequest(c *gin.Context, relayMode int, request *model.GeneralOpenAIRequest) (any, error) {
+func (a *Adaptor) ConvertRequest(c *gin.Context, meta *util.RelayMeta, request *model.GeneralOpenAIRequest) (any, error) {
 	if request == nil {
 		return nil, errors.New("request is nil")
 	}
@@ -62,5 +62,5 @@ func (a *Adaptor) GetModelList() []string {
 }
 
 func (a *Adaptor) GetChannelName() string {
-	return "Google PaLM"
+	return "google palm"
 }
