@@ -240,6 +240,7 @@ const SystemSetting = () => {
         ) {
             await updateOption('LinuxDoClientSecret', inputs.LinuxDoClientSecret);
         }
+        setOriginInputs(inputs);
     };
 
     const submitTurnstile = async () => {

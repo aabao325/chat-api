@@ -199,7 +199,7 @@ function App() {
                     }
                 />
                 <Route
-                    path='/oauth/linuxdo'
+                    path='/admin/oauth/linuxdo'
                     element={
                         <Suspense fallback={<Loading></Loading>}>
                             <LinuxDoOAuth />

@@ -30,7 +30,6 @@ func GetStatus(c *gin.Context) {
 			"footer_html":         config.Footer,
 			"wechat_qrcode":       config.WeChatAccountQRCodeImageURL,
 			"wechat_login":        config.WeChatAuthEnabled,
-			"linuxdo_login":       config.LinuxDoOAuthEnabled,
 			"server_address":      config.ServerAddress,
 			"price":               config.Price,
 			"turnstile_check":     config.TurnstileCheckEnabled,
