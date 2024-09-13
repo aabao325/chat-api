@@ -54,6 +54,29 @@ const useLogin = () => {
     }
   };
 
+  const linuxdoLogin = async (code, state) => {
+    try {
+      let aff = localStorage.getItem('aff');
+      const res = await API.get(`/api/oauth/linuxdo?code=${code}&state=${state}&aff=${aff}`);
+      const { success, message, data } = res.data;
+      if (success) {
+        if (message === 'bind') {
+          showSuccess('绑定成功！');
+          navigate('/setting');
+        } else {
+          dispatch({ type: LOGIN, payload: data });
+          localStorage.setItem('user', JSON.stringify(data));
+          showSuccess('登录成功！');
+          navigate('/');
+        }
+      }
+      return { success, message };
+    } catch (err) {
+      // 请求失败，设置错误信息
+      return { success: false, message: '' };
+    }
+  };
+
   const wechatLogin = async (code) => {
     try {
       const res = await API.get(`/api/oauth/wechat?code=${code}`);
@@ -78,7 +101,7 @@ const useLogin = () => {
     navigate('/login');
   };
 
-  return { login, logout, githubLogin, wechatLogin };
+  return { login, logout, githubLogin, linuxdoLogin, wechatLogin };
 };
 
 export default useLogin;

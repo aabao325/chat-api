@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import SubCard from 'ui-component/cards/SubCard';
-import { IconBrandWechat, IconBrandGithub, IconMail } from '@tabler/icons-react';
+import { IconBrandWechat, IconBrandGithub, IconSquareRoundedMinus, IconMail } from '@tabler/icons-react';
 import Label from 'ui-component/Label';
 import { API } from 'utils/api';
 import { showError, showSuccess } from 'utils/common';
@@ -159,7 +159,7 @@ export default function Profile() {
                 <IconBrandGithub /> {inputs.github_id || '未绑定'}
               </Label>
               <Label variant="ghost" color={inputs.linuxdo_id ? 'primary' : 'default'}>
-                <IconBrandGithub /> {inputs.linuxdo_id || '未绑定'}
+                <IconSquareRoundedMinus /> {inputs.linuxdo_id || '未绑定'}
               </Label>
               <Label variant="ghost" color={inputs.email ? 'primary' : 'default'}>
                 <IconMail /> {inputs.email || '未绑定'}

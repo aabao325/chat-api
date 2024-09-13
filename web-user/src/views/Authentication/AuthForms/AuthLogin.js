@@ -99,7 +99,7 @@ const LoginForm = ({ ...others }) => {
                 <Button
                   disableElevation
                   fullWidth
-                  onClick={() => onLinuxDoOAuthClicked()}
+                  onClick={() => onLinuxDoOAuthClicked(siteInfo.linuxdo_client_id)}
                   size="large"
                   variant="outlined"
                   sx={{
