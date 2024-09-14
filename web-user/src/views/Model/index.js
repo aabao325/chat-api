@@ -27,6 +27,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ModelTableHead from './component/TableHead';
 import { API } from 'utils/api';
 import { useTheme } from '@mui/material/styles';
+
 function formatNumber(num) {
   if (num % 1 !== 0) {
       const decimalPart = num.toString().split('.')[1];
@@ -80,11 +81,11 @@ export default function Log() {
       if (success && Array.isArray(data)) {
         setModels(data);
       } else {
-        showError(message);
+        showError(message && "没有找到匹配的模型，请尝试其他搜索词或切换分组");
         setModels([]);
       }
     } catch (err) {
-      showError(err.message);
+      showError(err.message && "请切换分组后搜索。");
       setModels([]);
     }
   };
@@ -136,8 +137,8 @@ export default function Log() {
   return (
     <Box sx={{ maxWidth: 1200, margin: 'auto', padding: 3 }}>
       <Alert severity="info">
-        若按次计费与按Token计费同时存在，按次计费优先，可前往令牌处配置计费策略。请选择分组查看。
-        </Alert>
+        请选择分组后查看。本站优先按Token计费，如需按次计费，请切换分组。
+      </Alert>
       <Stack direction="row" alignItems="center" mb={5} spacing={2}>
         <Typography variant="h4" sx={{ flexGrow: 1 }}>可用模型</Typography>
         <TextField 
@@ -153,17 +154,17 @@ export default function Log() {
           }}
         />
         <FormControl size="small" sx={{ minWidth: 120 }}>
-          <InputLabel id="group-select-label">分组</InputLabel>
+          <InputLabel id="group-select-label">选择分组</InputLabel>
           <Select
             labelId="group-select-label"
             value={selectedGroup}
-            label="分组"
+            label="选择分组"
             onChange={handleGroupChange}
             sx={{ fontSize: '0.875rem' }}
           >
             {groups.map((group) => (
               <MenuItem key={group.key} value={group.key}>
-                {group.key === '' ? '默认分组' : group.value}
+                {group.key === '' ? '🔥 默认分组 (支持部分模型 0.8元=1美金)' : group.value}
               </MenuItem>
             ))}
           </Select>
@@ -218,11 +219,9 @@ export default function Log() {
                         <TableCell component="th" scope="row" align="left" sx={{ fontWeight: 'medium' }}>
                           {modelInfo.model}
                         </TableCell>
+                        
+                        {/* 按次计费 */}
                         {/* <TableCell align="left">
-                          {modelInfo.model_ratio_2 !== undefined && modelInfo.model_ratio_2 !== 0 ?
-                            modelInfo.model_ratio_2.toFixed(4) : '无'}
-                        </TableCell> */}
-                        <TableCell align="left">
                           {modelInfo.model_ratio_2 !== undefined && modelInfo.model_ratio_2 !== 0 ?
                             (() => {
                               const numStr = modelInfo.model_ratio_2.toString();
@@ -233,12 +232,23 @@ export default function Log() {
                                 return numStr;
                               }
                             })() : '无'}
+                        </TableCell> */}
+
+                        <TableCell align="left">
+                          {modelInfo.model_ratio !== undefined && modelInfo.model_ratio !== 0 ?
+                            formatNumber(modelInfo.model_ratio): '无'}
                         </TableCell>
 
                         <TableCell align="left">
                           {modelInfo.model_ratio !== undefined && modelInfo.model_ratio !== 0 ?
+                            formatNumber(modelInfo.model_completion_ratio): '无'}
+                        </TableCell>
+                        
+                        <TableCell align="left">
+                          {modelInfo.model_ratio !== undefined && modelInfo.model_ratio !== 0 ?
                             formatNumber(modelInfo.model_ratio * 0.002) : '无'}
                         </TableCell>
+                        
                         <TableCell align="left">
                           {modelInfo.model_ratio !== undefined && modelInfo.model_ratio !== 0 ?
                             formatNumber(modelInfo.model_completion_ratio * 0.002) : '无'}
