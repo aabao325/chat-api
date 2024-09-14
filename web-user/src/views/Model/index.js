@@ -74,10 +74,10 @@ export default function Log() {
               setGroups(groupsWithDefault);
               setSelectedGroup('');
           } else {
-              showError(message);
+              showError(message && "没有找到匹配的模型，请尝试其他搜索词或切换分组");
           }
       } catch (err) {
-          showError(err.message);
+          showError(err.message && "请切换分组后搜索。");
       }
   };
 
@@ -177,7 +177,7 @@ export default function Log() {
           >
             {groups.map((group) => (
               <MenuItem key={group.key} value={group.key}>
-                {group.key === '' ? '🔥 默认分组 (支持部分模型 0.8元=1美金)' : group.value}
+                {group.key === '' ? '默认分组' : group.value}
               </MenuItem>
             ))}
           </Select>
@@ -254,7 +254,7 @@ export default function Log() {
 
                         <TableCell align="left">
                           {modelInfo.model_ratio !== undefined && modelInfo.model_ratio !== 0 ?
-                            formatNumber3(modelInfo.model_completion_ratio): '无'}
+                            formatNumber3(modelInfo.model_completion_ratio / modelInfo.model_ratio): '无'}
                         </TableCell>
                         
                         <TableCell align="left">
