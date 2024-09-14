@@ -31,8 +31,21 @@ import { useTheme } from '@mui/material/styles';
 function formatNumber(num) {
   if (num % 1 !== 0) {
       const decimalPart = num.toString().split('.')[1];
-      if (decimalPart.length > 5) {
-          return num.toFixed(5);
+      if (decimalPart.length > 6) {
+          return num.toFixed(6);
+      } else {
+          return num;
+      }
+  } else {
+      return num;
+  }
+}
+
+function formatNumber3(num) {
+  if (num % 1 !== 0) {
+      const decimalPart = num.toString().split('.')[1];
+      if (decimalPart.length > 3) {
+          return num.toFixed(3);
       } else {
           return num;
       }
@@ -236,12 +249,12 @@ export default function Log() {
 
                         <TableCell align="left">
                           {modelInfo.model_ratio !== undefined && modelInfo.model_ratio !== 0 ?
-                            formatNumber(modelInfo.model_ratio): '无'}
+                            formatNumber3(modelInfo.model_ratio): '无'}
                         </TableCell>
 
                         <TableCell align="left">
                           {modelInfo.model_ratio !== undefined && modelInfo.model_ratio !== 0 ?
-                            formatNumber(modelInfo.model_completion_ratio): '无'}
+                            formatNumber3(modelInfo.model_completion_ratio): '无'}
                         </TableCell>
                         
                         <TableCell align="left">
