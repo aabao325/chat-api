@@ -247,7 +247,7 @@ export default function Log() {
                             })() : '无'}
                         </TableCell> */}
 
-                        <TableCell align="left">
+                        {/* <TableCell align="left">
                           {modelInfo.model_ratio !== undefined && modelInfo.model_ratio !== 0 ?
                             formatNumber3(modelInfo.model_ratio): '无'}
                         </TableCell>
@@ -255,7 +255,7 @@ export default function Log() {
                         <TableCell align="left">
                           {modelInfo.model_ratio !== undefined && modelInfo.model_ratio !== 0 ?
                             formatNumber3(modelInfo.model_completion_ratio / modelInfo.model_ratio): '无'}
-                        </TableCell>
+                        </TableCell> */}
                         
                         <TableCell align="left">
                           {modelInfo.model_ratio !== undefined && modelInfo.model_ratio !== 0 ?
