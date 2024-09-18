@@ -80,7 +80,9 @@ const RegisterForm = ({ ...others }) => {
 
     setIsSending(true);
     try {
+      console.log('发送验证码邮箱:', email);
       const { success, message } = await sendVerificationCode(email, turnstileToken);
+      console.log('验证码响应日志:', { success, message });
       if (success) {
         setCountdown(30);
         showSuccess('验证码发送成功，请检查你的邮箱！');
@@ -88,6 +90,7 @@ const RegisterForm = ({ ...others }) => {
         showError(message);
       }
     } catch (error) {
+      console.error('发送验证码时出现错误:', error);
       showError('发送验证码时出现错误，请稍后重试');
     } finally {
       setIsSending(false);

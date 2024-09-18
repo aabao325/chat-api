@@ -23,9 +23,14 @@ const useRegister = () => {
     try {
       const res = await API.get(`/api/verification?email=${email}&turnstile=${turnstile}`);
       const { success, message } = res.data;
+      if (success) {
+        showSuccess('验证码发送成功，请检查你的邮箱！');
+      }
       return { success, message };
     } catch (err) {
-      return { success: false, message: err.response?.data?.message || '发送验证码失败，请稍后重试' };
+      console.error('发送验证码请求失败:', err);
+      // return { success: false, message: err.response?.data?.message || '发送验证码失败，请稍后重试' };
+      return { success: false, message: '发送验证码失败，请稍后重试' };
     }
   };
 
