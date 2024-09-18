@@ -78,14 +78,6 @@ const RegisterForm = ({ ...others }) => {
       return;
     }
 
-    const { success, message } = await sendVerificationCode(email, turnstileToken);
-    if (success) {
-      showSuccess('验证码发送成功，请检查你的邮箱！');
-    } else {
-      showError(message);
-      return;
-    }
-
     setIsSending(true);
     try {
       const { success, message } = await sendVerificationCode(email, turnstileToken);
@@ -115,21 +107,21 @@ const RegisterForm = ({ ...others }) => {
     };
   }, [countdown]);
 
-  
+
 
   useEffect(() => {
-      let affCodeParam = searchParams.get('aff');
-      setAffCode(affCodeParam || '');
+    let affCodeParam = searchParams.get('aff');
+    setAffCode(affCodeParam || '');
 
-      if (affCodeParam) {
-        localStorage.setItem('aff', affCodeParam);
-      }
+    if (affCodeParam) {
+      localStorage.setItem('aff', affCodeParam);
+    }
 
-      setShowEmailVerification(siteInfo.email_verification);
-      if (siteInfo.turnstile_check) {
-        setTurnstileEnabled(true);
-        setTurnstileSiteKey(siteInfo.turnstile_site_key);
-      }
+    setShowEmailVerification(siteInfo.email_verification);
+    if (siteInfo.turnstile_check) {
+      setTurnstileEnabled(true);
+      setTurnstileSiteKey(siteInfo.turnstile_site_key);
+    }
   }, [searchParams, siteInfo]);
 
 
@@ -142,10 +134,10 @@ const RegisterForm = ({ ...others }) => {
           confirmPassword: '',
           email: showEmailVerification ? '' : undefined,
           verification_code: showEmailVerification ? '' : undefined,
-          aff_code: affCode, 
+          aff_code: affCode,
           submit: null
         }}
-        enableReinitialize={true} 
+        enableReinitialize={true}
         validationSchema={Yup.object().shape({
           username: Yup.string().max(255).required('用户名是必填项'),
           password: Yup.string().max(255).required('密码是必填项'),
@@ -281,12 +273,9 @@ const RegisterForm = ({ ...others }) => {
                     onChange={handleChange}
                     endAdornment={
                       <InputAdornment position="end">
-                        {/* <Button variant="contained" color="primary" onClick={() => handleSendCode(values.email)}>
-                          发送验证码
-                        </Button> */}
-                        <Button 
-                          variant="contained" 
-                          color="primary" 
+                        <Button
+                          variant="contained"
+                          color="primary"
                           onClick={() => handleSendCode(values.email)}
                           disabled={countdown > 0 || isSending}
                         >
@@ -344,22 +333,22 @@ const RegisterForm = ({ ...others }) => {
             <FormControl fullWidth error={Boolean(touched.aff_code && errors.aff_code)} sx={{ ...theme.typography.customInput }}>
               <InputLabel htmlFor="outlined-adornment-affCode-register">邀请码</InputLabel>
               <OutlinedInput
-                  id="outlined-adornment-affCode-register"
-                  type="text"
-                  value={values.aff_code}
-                  name="aff_code"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  inputProps={{
-                    maxLength: 6 
-                  }}
+                id="outlined-adornment-affCode-register"
+                type="text"
+                value={values.aff_code}
+                name="aff_code"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                inputProps={{
+                  maxLength: 6
+                }}
               />
               {touched.aff_code && errors.aff_code && (
-                  <FormHelperText error id="standard-weight-helper-text-affCode-register">
-                      {errors.aff_code}
-                  </FormHelperText>
+                <FormHelperText error id="standard-weight-helper-text-affCode-register">
+                  {errors.aff_code}
+                </FormHelperText>
               )}
-          </FormControl>
+            </FormControl>
 
             <Box sx={{ mt: 2 }}>
               <AnimateButton>

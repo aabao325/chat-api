@@ -142,7 +142,7 @@ func RelayMidjourney(c *gin.Context) {
 			c.Redirect(http.StatusTemporaryRedirect, fmt.Sprintf("%s?retry=%d", c.Request.URL.Path, retryTimes-1))
 		} else {
 			if err.Code == 30 {
-				err.Result = "当前分组负载已饱和，请稍后再试，或升级账户以提升服务质量。"
+				err.Result = "当前分组负载已饱和，请稍后再试，或切换直连分组以提升服务质量。"
 			}
 			c.JSON(400, gin.H{
 				"error": err.Description + " " + err.Result,
