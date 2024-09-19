@@ -32,7 +32,8 @@ function formatNumber(num) {
   if (num % 1 !== 0) {
       const decimalPart = num.toString().split('.')[1];
       if (decimalPart.length > 6) {
-          return num.toFixed(6);
+          // return num.toFixed(6);
+          return parseFloat(num.toFixed(6));
       } else {
           return num;
       }
@@ -45,7 +46,8 @@ function formatNumber3(num) {
   if (num % 1 !== 0) {
       const decimalPart = num.toString().split('.')[1];
       if (decimalPart.length > 3) {
-          return num.toFixed(3);
+          // return num.toFixed(3);
+          return parseFloat(num.toFixed(3));
       } else {
           return num;
       }
