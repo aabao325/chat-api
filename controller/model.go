@@ -210,6 +210,8 @@ func getModelType(model string) string {
 		return "Ali"
 	case strings.Contains(model, "stable-"):
 		return "Stability"
+	case strings.Contains(model, "deepseek"):
+		return "Deepseek"
 	default:
 		return "Other"
 	}
