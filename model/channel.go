@@ -44,7 +44,6 @@ type Channel struct {
 	IsImageURLEnabled     *int    `json:"is_image_url_enabled" gorm:"default:0"`
 	StatusCodeMapping     *string `json:"status_code_mapping" gorm:"type:varchar(1024);default:''"`
 	Config                string  `json:"config"`
-	FixedContent          string  `json:"fixed_content" gorm:"type:varchar(1000);"`
 	ProxyURL              *string `json:"proxy_url"`
 	GcpAccount            *string `json:"gcp_account" gorm:"type:varchar(4096);default:''"`
 }

@@ -1187,23 +1187,6 @@ const EditChannel = (props) => {
                         value={inputs.headers}
                         autoComplete='new-password'
                     />
-                    
-                    <div style={{marginTop: 10}}>
-                        <Typography.Text>自定义内容</Typography.Text>
-                    </div>
-                    <Input
-                        style={{marginTop: 10}}
-                        label='自定义'
-                        name='fixed_content'
-                        placeholder={'请输入自定义后缀'}
-                        onChange={value => {
-                            handleInputChange('fixed_content', value)
-                        }}
-                        autosize
-                        value={inputs.fixed_content}
-                        autoComplete='new-password'
-                        required={!isEdit}
-                    />
 
                     {
                         inputs.type === 22 && (

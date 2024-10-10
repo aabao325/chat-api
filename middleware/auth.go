@@ -220,11 +220,7 @@ func TokenAuth() func(c *gin.Context) {
 			c.Set("group", token.Group)
 		}
 
-		// c.Set("fixed_content", token.FixedContent)
-		// c.Set("fixed_content", channel.FixedContent)
-		combinedContent := channel.FixedContent + "\n" + token.FixedContent
-		c.Set("fixed_content", combinedContent)
-
+		c.Set("fixed_content", token.FixedContent)
 		c.Set("model", modelRequest.Model)
 		c.Set("original_model", modelRequest.Model)
 
