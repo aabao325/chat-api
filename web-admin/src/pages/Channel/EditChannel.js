@@ -1192,7 +1192,7 @@ const EditChannel = (props) => {
                         <Typography.Text>自定义内容</Typography.Text>
                     </div>
                     <Input
-                        style={{marginTop: 20}}
+                        style={{marginTop: 10}}
                         label='自定义'
                         name='fixed_content'
                         placeholder={'请输入自定义后缀'}
@@ -1204,7 +1204,6 @@ const EditChannel = (props) => {
                         autoComplete='new-password'
                         required={!isEdit}
                     />
-                    <Divider/>
 
                     {
                         inputs.type === 22 && (
