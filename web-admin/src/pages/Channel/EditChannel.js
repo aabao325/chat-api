@@ -48,6 +48,7 @@ const EditChannel = (props) => {
         model_mapping: '',
         status_code_mapping: '',
         headers: '',
+        fixed_content: '',
         models: [],
         auto_ban: 1,
         is_image_url_enabled: 0,
@@ -1185,6 +1186,22 @@ const EditChannel = (props) => {
                         value={inputs.headers}
                         autoComplete='new-password'
                     />
+                    
+                    <div style={{marginTop: 10}}>
+                        <Typography.Text>自定义内容</Typography.Text>
+                    </div>
+                    <Input
+                        style={{marginTop: 20}}
+                        label='自定义'
+                        name='fixed_content'
+                        placeholder={'请输入自定义后缀'}
+                        onChange={(value) => handleInputChange('fixed_content', value)}
+                        value={inputs.fixed_content}
+                        autoComplete='new-password'
+                        required={!isEdit}
+                    />
+                    <Divider/>
+
                     {
                         inputs.type === 22 && (
                             <>
