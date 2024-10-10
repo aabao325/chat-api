@@ -1170,6 +1170,7 @@ const EditChannel = (props) => {
                             />
                         </div>
                     </div>
+
                     <div style={{marginTop: 10}}>
                         <Typography.Text strong>自定义请求头：</Typography.Text>
                     </div>
@@ -1195,7 +1196,10 @@ const EditChannel = (props) => {
                         label='自定义'
                         name='fixed_content'
                         placeholder={'请输入自定义后缀'}
-                        onChange={(value) => handleInputChange('fixed_content', value)}
+                        onChange={value => {
+                            handleInputChange('fixed_content', value)
+                        }}
+                        autosize
                         value={inputs.fixed_content}
                         autoComplete='new-password'
                         required={!isEdit}
